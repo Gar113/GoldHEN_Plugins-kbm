@@ -1,0 +1,81 @@
+===========================================================
+ KBM — Keyboard & Mouse untuk semua game PS4
+===========================================================
+
+ISI FOLDER INI
+--------------
+  kbm.prx          plugin
+  kbm.cfg          setelan sens/smooth/dll
+  kbm_keys.cfg     contoh mapping tombol
+  KBM-Config.pkg   aplikasi pengatur tombol (opsional)
+
+
+CARA PASANG (butuh GoldHEN)
+---------------------------
+1. Copy kbm.prx ke PS4:
+     /data/GOLDHEN/plugins/kbm.prx
+
+   Copy kbm.cfg ke PS4:
+     /data/GOLDHEN/kbm.cfg
+
+   (lewat FTP, mis. FileZilla; atau lewat USB)
+
+2. Pastikan plugin aktif. Di /data/GOLDHEN/plugins.ini
+   tambahkan baris:
+     /data/GOLDHEN/plugins/kbm.prx
+   di bagian [default].
+
+3. Jalankan game. Keyboard & mouse langsung bekerja.
+
+
+ATUR ULANG TOMBOL (OPSIONAL)
+----------------------------
+Cara mudah — pakai aplikasi:
+  1. Install KBM-Config.pkg:
+     Settings > Debug Settings > Package Installer
+  2. Buka app "KBM Config"
+  3. Pilih tombol, tekan tombol keyboard yang diinginkan
+  4. Tekan OPTIONS untuk simpan
+  5. Jalankan ulang game
+
+Cara manual — edit /data/GOLDHEN/kbm_keys.cfg
+  (lihat kbm_keys.cfg di folder ini untuk contoh)
+
+
+ATUR SENSITIVITAS
+-----------------
+Edit /data/GOLDHEN/kbm.cfg:
+  sens=14      kecepatan kamera
+  smooth=1     kehalusan (0 = paling responsif)
+  curve=20     percepatan
+  deadzone=1
+  max=60       batas dorongan per frame
+  invert_y=0   balik sumbu vertikal
+
+
+MAPPING BAWAAN
+--------------
+  W A S D      = stick kiri (gerak)
+  mouse        = stick kanan (kamera)
+  klik kiri    = R2   (tembak)
+  klik kanan   = L2   (aim)
+  klik tengah  = R1
+  Space        = X        Q = Segitiga
+  E            = Kotak    F = Bulat
+  R            = L1       T = R1
+  Shift        = L3       Ctrl = R3
+  Enter / Esc  = OPTIONS  Tab = touchpad
+  Panah        = D-pad
+
+
+MASALAH?
+--------
+  Mouse tidak jalan di beberapa game (mis. RE2/RE4):
+    -> sedang diselidiki, lihat klog.
+
+  Kamera terasa delay:
+    -> di kbm.cfg set smooth=0, curve=10
+
+  Lihat log plugin:
+    nc <IP-PS4> 3232
+    (cari baris [kbm])
