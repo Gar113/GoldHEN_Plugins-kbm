@@ -1,0 +1,142 @@
+===========================================================
+ KBM — Keyboard & Mouse untuk semua game PS4
+===========================================================
+
+ISI FOLDER INI
+--------------
+  kbm.prx          plugin
+  kbm.cfg          setelan sens/smooth/dll
+  kbm_keys.cfg     contoh mapping tombol
+  KBM-Config.pkg   aplikasi pengatur tombol (opsional)
+
+
+CARA PASANG (butuh GoldHEN)
+---------------------------
+1. Copy kbm.prx ke PS4:
+     /data/GOLDHEN/plugins/kbm.prx
+
+   Copy kbm.cfg ke PS4:
+     /data/GOLDHEN/kbm.cfg
+
+   (lewat FTP, mis. FileZilla; atau lewat USB)
+
+2. Pastikan plugin aktif. Di /data/GOLDHEN/plugins.ini
+   tambahkan baris:
+     /data/GOLDHEN/plugins/kbm.prx
+   di bagian [default].
+
+3. Jalankan game. Keyboard & mouse langsung bekerja.
+
+
+ATUR ULANG TOMBOL (OPSIONAL)
+----------------------------
+Cara mudah — pakai aplikasi:
+  1. Install KBM-Config.pkg:
+     Settings > Debug Settings > Package Installer
+  2. Buka app "KBM Config"
+
+     Di dalam app ada 2 layar (tab), ganti dengan F1 dan F2:
+
+       F1 = layar TOMBOL     (atur mapping keyboard)
+       F2 = layar TEMPLATE   (simpan / pakai setelan)
+
+     Layar TOMBOL:
+       - pilih baris: STIK KIRI, atau D-PAD, atau panah keyboard
+       - X (Cross) = ubah mapping baris itu
+       - lalu TEKAN tombol keyboard yang diinginkan
+       - OPTIONS = simpan, O (Circle) = batal
+
+     Aplikasi berbunyi saat mengarahkan, mengubah, membatalkan,
+     dan menyimpan. Di layar ada status: Keyboard / Pad / Suara.
+
+     Kalau pad tidak terbaca, keyboard bisa dipakai sendiri:
+       panah = pilih baris, ENTER = ubah, TAB = simpan.
+
+     Kalau stick terasa terlalu peka / tidak peka, itu bisa diatur
+     di kode (STICK_DZ di main.cpp), tapi defaultnya sudah enak.
+  3. Jalankan ulang game
+
+
+TEMPLATE SETELAN (BIAR TIDAK SETEL ULANG TIAP GANTI GAME)
+---------------------------------------------------------
+Masalah: tiap game enaknya beda. FPS butuh kamera cepat, sniper
+butuh lambat. Kalau harus setel ulang tiap ganti game, repot.
+
+Solusinya: simpan setelan jadi TEMPLATE bernama. Tinggal pilih.
+
+Di app KBM Config, tekan F2 untuk masuk tab TEMPLATE.
+
+  Panah atas/bawah / stick  = pilih template
+  X (Cross) atau ENTER      = pakai template ini
+  SEGITIGA atau F3          = simpan setelan sekarang jadi template
+  KOTAK atau F4             = hapus template terpilih
+  Panah kiri/kanan          = pilih nama saat menyimpan
+  F1                        = kembali ke tab TOMBOL
+
+  Catatan: di pad, L1 dan R1 juga bisa mengganti tab.
+
+Cara pakainya:
+  1. Setel kamera & tombol sesuai selera untuk game A
+  2. Tab TEMPLATE, pilih nama (mis. "TLOU2"), tekan SEGITIGA
+  3. Ganti ke game B, setel lagi, simpan sebagai "Spider-Man"
+  4. Besok mau main game A? Tab TEMPLATE, pilih "TLOU2", tekan X
+  5. Jalankan ulang game
+
+Template disimpan sebagai file di:
+  /data/GOLDHEN/templates/<nama>.cfg
+
+File-file itu bisa kamu salin, edit manual, atau bagikan ke orang
+lain. Yang penting namanya berakhiran .cfg.
+
+Isi satu template = setelan kamera + mapping tombol sekaligus, jadi
+satu template itu satu paket lengkap.
+
+"DEFAULT" selalu ada dan tidak bisa dihapus, jadi selalu ada jalan
+kembali ke setelan awal.
+
+Folder "templates" di paket ini berisi contoh siap pakai
+(DEFAULT, FPS, Sniper, Santai). Salin isinya ke
+/data/GOLDHEN/templates/ kalau mau langsung ada pilihannya.
+
+Cara manual — edit /data/GOLDHEN/kbm_keys.cfg
+  (lihat kbm_keys.cfg di folder ini untuk contoh)
+
+
+ATUR SENSITIVITAS
+-----------------
+Edit /data/GOLDHEN/kbm.cfg:
+  sens=14      kecepatan kamera
+  smooth=3     kehalusan (0 = paling responsif)
+  curve=20     percepatan
+  deadzone=1
+  max=127      batas dorongan per frame (127 = praktis tanpa batas)
+  invert_y=0   balik sumbu vertikal
+
+
+MAPPING BAWAAN
+--------------
+  W A S D      = stick kiri (gerak)
+  mouse        = stick kanan (kamera)
+  klik kiri    = R2   (tembak)
+  klik kanan   = L2   (aim)
+  klik tengah  = R1
+  Space        = X        Q = Segitiga
+  E            = Kotak    F = Bulat
+  R            = L1       T = R1
+  Shift        = L3       Ctrl = R3
+  Enter / Esc  = OPTIONS  Tab = touchpad
+  Panah        = D-pad
+
+
+MASALAH?
+--------
+  Mouse tidak jalan di beberapa game (mis. RE2/RE4):
+    -> hook pad tidak kena di game itu, sedang diselidiki.
+       Kirim klog supaya bisa dianalisa.
+
+  Kamera terasa delay:
+    -> di kbm.cfg set smooth=0, curve=10
+
+  Lihat log plugin:
+    nc <IP-PS4> 3232
+    (cari baris [kbm])
